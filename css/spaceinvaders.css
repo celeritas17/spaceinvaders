@@ -1,0 +1,42 @@
+ body{
+   background-color:black;
+   font-family:Terminal, monospace;
+   text-align:center;
+   color:green;
+   }
+   
+   img {
+
+      position:absolute;
+      height:125px;
+      width:125px;
+   }
+
+   .spaceinvaders {  
+      padding: 1px 10px 1px 10px;  
+      color: black;  
+      z-index:0;  
+      border-radius: 10px;  
+     background-color:green;
+
+      font-family: "Andale Mono", monospace;  
+      font-size: 3em;  
+      font-style: italic;  
+      text-decoration: none;  
+    }  
+
+     a.spacepage:link, a.spacepage:visited {  
+      padding: 1px 10px 1px 10px;  
+      color: #fff;  
+      background: green;  
+      border-radius: 7px;  
+      border: 1px outset rgba(50,50,50,.5);  
+      font-family: "Andale Mono", monospace;  
+      font-size: 14px;  
+      font-style: italic;  
+      text-decoration: none;  
+    }  
+      
+   
+
+   
