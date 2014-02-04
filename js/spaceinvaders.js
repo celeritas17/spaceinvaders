@@ -25,7 +25,7 @@ var move_spaceship = function(i){
     var current_left = parseInt($('#ufo' + i).css('left'));
     var current_top = parseInt($('#ufo' + i).css('top'));
     var up_or_down = (Math.random() > 0.5) ? 1 : -1
-    $('#ufo' + i).css('left', (current_left + up_or_down*Math.floor(Math.random()*100))%1250);
+    $('#ufo' + i).css('left', (current_left + Math.floor(Math.random()*100))%1250);
     $('#ufo' + i).css('top', 175 + (current_top + up_or_down*Math.floor(Math.random()*150))%600); 
   };
 
