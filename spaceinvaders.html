@@ -1,26 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    
-    
-	<link rel="stylesheet" type="text/css" href="css/spaceinvaders.css" />
-
-   
-   
-   <title>Ryan Koven CS 81</title>
-   
-   </head>
-   <body>
+	 <link rel="stylesheet" type="text/css" href="css/spaceinvaders.css" />
+   <title>Spaceinvaders</title>
+  </head>
+  <body>
+    <h1 class="spaceinvaders"><i>Space Invaders</i></h1>
+    <p>Destroy the INVADERS by clicking on the Spaceships</p> 
+    <a id="go" class="spacepage" href="#">Click to Play!</a>
+    <img src="img/explosion.jpg" style="display:none" />
+    <div id="ufos">
+      <img src="img/ufo.jpg" id="ufo0" class="ufo" />
+      <img src="img/ufo.jpg" id="ufo1" class="ufo" />
+      <img src="img/ufo.jpg" id="ufo2" class="ufo" />
+      <img src="img/ufo.jpg" id="ufo3" class="ufo" />
+      <img src="img/ufo.jpg" id="ufo4" class="ufo" />
+    </div>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script src="js/spaceinvaders.js" type="text/javascript"></script>
-  <h1 class="spaceinvaders"><i>Space Invaders</i></h1>
-  <p>Destroy the INVADERS by clicking on the Spaceships</p> 
-  <a class="spacepage" href="#" onclick="if (!clicked){ var timer = setInterval(startgame,750); moving=true; clicked=true;}">Click to Play!</a>
-
-   <embed src="sfx/techno.mp3" autostart="true" loop="true"
-width="2" height="0">
-</embed> 
-
-
-   </body>
-   
-   </html>
+  </body>   
+</html>

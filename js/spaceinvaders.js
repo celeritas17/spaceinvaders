@@ -1,89 +1,40 @@
-/* Ryan Koven, 2012. SMC CS 81 */
 
+var num_ufos = 5;
+var game_on = false;
 
+for (var i = 0; i < num_ufos; i++){
+  $('#ufo' + i).css('left', 175 + i*125);
+  $('#ufo' + i).css('top', 175 + Math.floor(Math.random()*400)); 
+}
 
+$('#ufos').delegate('img', 'click', function(){
+  $(this).attr('src', 'img/explosion.jpg');
+  var ufo = this;
+  setTimeout(function(){
+    $(ufo).toggle();
+  }, 750);
+  setTimeout(function(){
+    $(ufo).attr('src', 'img/ufo.jpg');
+    $(ufo).toggle();
+  }, 3500);
+});
 
-var moving = false;
-
-var kills = 0;
-var clicked = false;
-
-
-
-function Spaceship(){
-  this.dx = Math.floor(Math.random()*11);
-  this.dy = Math.floor(Math.random()*11);
-  this.alive = true;
-  this.picsrc="img/ufo.jpg";
-  this.starttop = Math.floor(Math.random()*screen.height-125)+300;
-  this.startleft = Math.floor(Math.random()*1000);
-  this.destroy = destroy;
-
-  function destroy(){
-
-   this.alive = false;
-   
+var move_spaceships = function(){
+  var move_spaceship = function(i){
+    var current_left = parseInt($('#ufo' + i).css('left'));
+    var current_top = parseInt($('#ufo' + i).css('top'));
+    var up_or_down = (Math.random() > 0.5) ? 1 : -1
+    $('#ufo' + i).css('left', (current_left + up_or_down*Math.floor(Math.random()*100))%1250);
+    $('#ufo' + i).css('top', 175 + (current_top + up_or_down*Math.floor(Math.random()*150))%600); 
   }
-  
-}
-
-function changepic(id, picid){
-
-  if (picid)
-    document.getElementById(id).src="img/explosion.jpg";
-  else 
-    document.getElementById(id).src="img/ufo.jpg";
-}
-
-
-var spaceships = new Array();
-
-
-for (var i = 0; i<5; i++){
-    spaceships[i] = new Spaceship;
-   
-    document.write("<img id=\"space"+i+"\"  src=\""+spaceships[i].picsrc +"\" style=\"left:"+spaceships[i].startleft+"px; top:"+spaceships[i].starttop+"px;\" onclick=\"if (moving && spaceships[" + i +"].alive) {changepic(&quot;space"+ i+ "&quot;, 1); kills++;  spaceships["+i+"].destroy(); } \" />");
-
-          
-}
-
-function startgame(){
-    
-    if (kills%5 == 0){
-
-      for (var k = 0; k < 5; k++){
-          spaceships[k].alive = true;
-          changepic("space" + k, 0);
-}
+  for (var i = 0; i < num_ufos; i++){
+    move_spaceship(i);
   }
+};
 
-    if (moving){
-
-    for (var j = 0; j<5; j++){
-              
-
-              var newleft;
-              var newright;
-
-              if (spaceships[j].alive){
-
-              var spaceid = "space"+j;
-               if (parseInt(document.getElementById(spaceid).style.left) > (screen.width -125) )
-                  newleft = Math.floor(Math.random()*(screen.width-125));
-               else
-                  newleft = parseInt(document.getElementById(spaceid).style.left) + spaceships[j].dx;
-
-               if ((parseInt(document.getElementById(spaceid).style.top) > (screen.height - 500)) || (parseInt(document.getElementById(spaceid).style.top) < (screen.height - 500)))
-                  newtop = Math.floor(Math.random()*(screen.height)+200);
-                else 
-                     newtop = parseInt(document.getElementById(spaceid).style.top) + spaceships[j].dy;
-                
-                  document.getElementById(spaceid).style.left = newleft +"px";
-                  document.getElementById(spaceid).style.top = newtop +"px";
-            }     
-                             
-}
-
-}
-
-}
+$('#go').click(function(){
+  if (!game_on){
+    game_on = true;
+    return setInterval(move_spaceships, 750);
+  }
+});
