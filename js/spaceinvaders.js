@@ -8,15 +8,17 @@ for (var i = 0; i < num_ufos; i++){
 }
 
 $('#ufos').delegate('img', 'click', function(){
-  $(this).attr('src', 'img/explosion.jpg');
-  var ufo = this;
-  setTimeout(function(){
-    $(ufo).toggle();
-  }, 750);
-  setTimeout(function(){
-    $(ufo).attr('src', 'img/ufo.jpg');
-    $(ufo).toggle();
-  }, 3500);
+  if (game_on){
+    $(this).attr('src', 'img/explosion.jpg');
+    var ufo = this;
+    setTimeout(function(){
+      $(ufo).toggle();
+    }, 750);
+    setTimeout(function(){
+      $(ufo).attr('src', 'img/ufo.jpg');
+      $(ufo).toggle();
+    }, 3500);
+  }
 });
 
 var move_spaceships = function(){
