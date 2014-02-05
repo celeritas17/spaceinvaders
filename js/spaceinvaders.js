@@ -1,19 +1,27 @@
 
+
 var num_ufos = 5;
 var game_on = false;
+var killed = 0;
+var dead_ship = false;
 
 for (var i = 0; i < num_ufos; i++){
   $('#ufo' + i).css('left', 175 + i*125);
   $('#ufo' + i).css('top', 175 + Math.floor(Math.random()*400)); 
 }
 
+$('#counter').html(killed);
+
 $('#ufos').delegate('img', 'click', function(){
-  if (game_on){
+  if (game_on && !dead_ship){
+    dead_ship = true;
+    $('#counter').html(++killed);
     $(this).attr('src', 'img/explosion.jpg');
     var ufo = this;
     setTimeout(function(){
       $(ufo).toggle();
-    }, 750);
+      dead_ship = false;
+    }, 500);
     setTimeout(function(){
       $(ufo).attr('src', 'img/ufo.jpg');
       $(ufo).toggle();

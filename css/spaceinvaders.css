@@ -24,7 +24,7 @@ img {
   text-decoration: none;  
 }  
 
- a.spacepage:link, a.spacepage:visited {  
+ a.spacepage:link, a.spacepage:visited, #counter {  
   padding: 1px 10px 1px 10px;  
   color: #fff;  
   background: green;  
@@ -35,6 +35,11 @@ img {
   font-style: italic;  
   text-decoration: none;  
 }  
+
+#counter{
+  float:right;
+  background-color: red;
+}
       
    
 
